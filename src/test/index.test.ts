@@ -8,7 +8,7 @@ describe('test Class Test part variable', () => {
     expect(test?.name).toBe('Saleck');
   });
 
-  xit('must return 333', () => {
+  xit('must return the number 333', () => {
     expect(typeof test?.figure).toBe('number');
     expect(test?.figure).toBe(333);
   });
