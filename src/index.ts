@@ -7,13 +7,13 @@
  */
 export default class Test {
   /* Créer une variable "name" avec un type string qui est assigné la valeur "Saleck" */
-    public name: string = "Saleck";
+    public name: any;
 
   /* Créer une variable "figure" avec un type number avec la valeur 333 */
-    public figure: number = 333;
+    public figure: any;
 
   /* Créer une variable "Person" avec un objet javascript une clé "name" et "age" avec comme valeur "Saleck" et 29 */
-    public Person: { name: string, age: number} = { name: "Renaud", age: 38 };
+    public Person: any;
 
   /* Créer une variable "numberSequence" avec un array de nombre avec le type array<number> ou number[] avec les chiffres 1, 2 et 3 */
     public numberSequence: any;
