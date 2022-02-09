@@ -9,7 +9,7 @@
  *  3 - name this class Contact
  *  4 - In parameter of constructor add public properties:
  *      email (string)
- *      phone with properties :
+ *      phone with Array of properties :
  *          country: number,
  *          number: number
  *      network: add properties in function of contact (optional or another) must take string for ids' record.
@@ -26,9 +26,9 @@
  *          first (string)
  *          last (string)
  *      date: add properties in function (optional or another)
- *            e.g.: birthday (string),
- *                  carPermit: { deliver: string, expire: string },
- *                  idCard: { deliver: string, expire: string }
+ *            e.g.: birthday (Date),
+ *                  carLicense: { delivery: Date, expire: Date },
+ *                  idCard: { deliver: Date, expire: Date }
  *      address: { street: string, number: number, zip: number, city: string, country: string } or must be an array another Object must be a class same properties
  *      contact takes Contact Class
  *      register must be a date
@@ -92,7 +92,7 @@ export default class ObjectUnit {
     public getAllContactsIsActive: any
 
     /*
-     *  Create method, it must return all contacts born in 1998 asn earlier and registering in 2020 and later.
+     *  Create method, it must return all contacts born in 1998 and registering in 2020 for example.
      */
     public getAllContactsBornAndRegister: any
 
@@ -100,10 +100,4 @@ export default class ObjectUnit {
      *  Create method with all contacts with email which domain name is orange
      */
     public getAllContactsWithEmailProvider: any
-
-    /*
-     *  Create method with gives hours for each city in address in function of id. it must return array object city: string and hour: string.
-     *
-     */
-    public getHoursforAllContactInCity: any
 }

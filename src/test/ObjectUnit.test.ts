@@ -38,7 +38,9 @@ const MOCK = [
                 }
             ],
             network: {
-                linkedin: "saleck-el-jili-b56823175"
+                linkedin: "saleck-el-jili-b56823175",
+                facebook: undefined,
+                twitter: undefined
             }
         },
         register: new Date("2022-01-24"),
@@ -53,29 +55,31 @@ const MOCK = [
         dates: {
             birthday: new Date("2000-12-09"),
             carLicense: {
-                delivery: "",
-                expire: ""
+                delivery: new Date(""),
+                expire: new Date("")
             },
             idCard: {
-                delivery: "",
-                expire: ""
+                delivery: new Date(""),
+                expire: new Date("")
             }
         },
         address: {
             street: "rue villiers",
-            number: "20",
+            number: 20,
             zip: 93200,
             city: "Saint Denis",
             country: "fr"
         },
         contact: {
             email: "alexandre.benali@estiam.com",
-            phone: {
+            phone: [{
                 country: 33,
                 number: 689725687,
-            },
+            }],
             network: {
-                linkedin: "alexandrebenali"
+                linkedin: "alexandre-benali",
+                facebook: undefined,
+                twitter: undefined
             }
         },
         register: new Date("2020-10-8"),
@@ -90,12 +94,12 @@ const MOCK = [
         dates: {
             birthday: new Date("1983-10-22"),
             carLicense: {
-                delivery: undefined,
-                expire: undefined
+                delivery: new Date(''),
+                expire: new Date('')
             },
             idCard: {
-                delivery: undefined,
-                expire: undefined
+                delivery: new Date(""),
+                expire: new Date("")
             }
         },
         address: {
@@ -107,15 +111,18 @@ const MOCK = [
         },
         contact: {
             email: "racinet.renaud@orange.fr",
-            phone: {
+            phone: [{
                 country: 33,
                 number: 686126582
-            },
+            }],
             network: {
                 linkedin: "renaud-racinet-81930520",
-                facebook: "renaud.racinet"
+                facebook: "renaud.racinet",
+                twitter: undefined
             }
-        }
+        },
+        register: new Date("2019-6-15"),
+        isActive: false
     }
 ];
 
@@ -124,32 +131,32 @@ const INSTANCE = new AdressBook();
 describe("test Class ObjectUnit part Names", () => {
     INSTANCE.contacts = MOCK;
 
-    it("must return contact with full names for id 1 gives Saleck El Jili", () => {
+    xit("must return contact with full names for id 1 gives Saleck El Jili", () => {
         expect(typeof INSTANCE?.getNames(1)).toBe("string");
         expect(INSTANCE?.getNames(1)).toBe("Saleck El Jili");
     });
 
-    it("must return contact with full names for id 2 gives Alexandre Benali", () => {
+    xit("must return contact with full names for id 2 gives Alexandre Benali", () => {
         expect(typeof INSTANCE?.getNames(2)).toBe("string");
         expect(INSTANCE?.getNames(2)).toBe("Alexandre Benali");
     });
 
-    it("must return contact with full names for id 3 gives Renaud Racinet", () => {
+    xit("must return contact with full names for id 3 gives Renaud Racinet", () => {
         expect(typeof INSTANCE?.getNames(3)).toBe("string");
         expect(INSTANCE?.getNames(3)).toBe("Renaud Racinet");
     });
 
-    it("must return contact with simplify names for id 1 gives S. El Jili", () => {
+    xit("must return contact with simplify names for id 1 gives S. El Jili", () => {
         expect(typeof INSTANCE?.getSimplifyNames(1)).toBe("string");
         expect(INSTANCE?.getSimplifyNames(1)).toBe("S. El Jili");
     });
 
-    it("must return contact with simplify names for id 2 gives A. Benali", () => {
+    xit("must return contact with simplify names for id 2 gives A. Benali", () => {
         expect(typeof INSTANCE?.getSimplifyNames(2)).toBe("string");
         expect(INSTANCE?.getSimplifyNames(2)).toBe("A. Benali");
     });
 
-    it("must return contact with simplify names for id 3 gives R. Racinet", () => {
+    xit("must return contact with simplify names for id 3 gives R. Racinet", () => {
         expect(typeof INSTANCE?.getSimplifyNames(3)).toBe("string");
         expect(INSTANCE?.getSimplifyNames(3)).toBe("R. Racinet");
     });
@@ -187,18 +194,86 @@ describe("test Class ObjectUnit part Dates", () => {
        expect(INSTANCE.getYearBirthday(3)).toBe("1983");
    });
 
-   it("must return age with id 3 gives 29", () => {
+   xit("must return age with id 3 gives 29", () => {
        expect(typeof INSTANCE?.getAge(1)).toBe("number");
        expect(INSTANCE.getAge(1)).toBe(29);
    });
 
-   it("must return age with id 2 gives 22", () => {
+   xit("must return age with id 2 gives 22", () => {
        expect(typeof INSTANCE?.getAge(2)).toBe("number");
        expect(INSTANCE.getAge(2)).toBe(22);
    });
 
-   it("must return age with id 3 gives 39", () => {
+   xit("must return age with id 3 gives 39", () => {
        expect(typeof INSTANCE?.getAge(3)).toBe("number");
        expect(INSTANCE.getAge(3)).toBe(39);
    })
 });
+
+describe( "test Class ObjectUnit part Address", () => {
+
+    xit("must return full address in function by id: 1 gives \"10, rue mollet 75017 Paris\"", () => {
+       expect(typeof INSTANCE?.getAddress(1)).toBe("string");
+       expect(INSTANCE?.getAddress(1)).toBe('10, rue mollet\n75017 Paris');
+    });
+
+    xit("must return full address in function by id: 1 gives \"20, rue villiers 93200 Saint Denis\"", () => {
+        expect(typeof INSTANCE?.getAddress(2)).toBe("string");
+        expect(INSTANCE?.getAddress(2)).toBe('20, rue villiers\n93200 Saint Denis');
+    });
+
+    xit("must return full address in function by id: 2 gives \"3, square des tilleuls 92360 Meudon-la-Forêt\"", () => {
+        expect(typeof INSTANCE?.getAddress(3)).toBe("string");
+        expect(INSTANCE?.getAddress(3)).toBe('3, rue square des tilleuls\n92360 Meudon-la-Forêt');
+    });
+});
+
+describe("test Class ObjectUnit part Contact Network", () => {
+
+    xit("must return link for specific social network with id: 1 and linkedin", () => {
+        expect(typeof INSTANCE?.getNetwork(1, "linkedin")).toBe("string");
+        expect(INSTANCE?.getNetwork(1, "linkedin")).toBe("https://www.linkedin.com/in/saleck-el-jili-b56823175");
+    });
+
+    xit("must return link for specific social network with id: 2 and linkedin", () => {
+        expect(typeof INSTANCE?.getNetwork(2, "linkedin")).toBe("string");
+        expect(INSTANCE?.getNetwork(2, "linkedin")).toBe("https://www.linkedin.com/in/alexandre-benali");
+    });
+
+    xit("must return link for specific social network with id: 3 and linkedin", () => {
+        expect(typeof INSTANCE?.getNetwork(3, "linkedin")).toBe("string");
+        expect(INSTANCE?.getNetwork(3, "linkedin")).toBe("https://www.linkedin.com/in/renaud-racinet-81930520");
+    });
+
+    xit("must return link for specific social network with id: 3 and facebook", () => {
+        expect(typeof INSTANCE?.getNetwork(3, "facebook")).toBe("string");
+        expect(INSTANCE?.getNetwork(3, "facebook")).toBe("https://www.facebook.com/renaud.racinet");
+    });
+});
+
+describe("Test Class ObjectUnit part Contact mapipulation", () => {
+
+    const EXPECTED_SALECK = [MOCK[0]];
+    const EXPECTED_ALEXANDRE = [MOCK[1]];
+    const EXPECTED_RENAUD = [MOCK[2]];
+
+    xit("must return allContactIsActive", () => {
+        expect(typeof INSTANCE?.getAllContactsIsActive()).toBe("object");
+        expect(INSTANCE?.getAllContactsIsActive()).toStrictEqual([...EXPECTED_SALECK, ...EXPECTED_ALEXANDRE]);
+    });
+
+    xit("must return all contact born in 1993 and registering in 2022.", () => {
+        expect(typeof INSTANCE?.getAllContactsBornAndRegister(1993, 2022)).toBe("object");
+        expect(INSTANCE?.getAllContactsBornAndRegister(1993, 2022)).toStrictEqual(EXPECTED_SALECK);
+    });
+
+    xit("must return all contact born in 2000 and earlier and registering in 2019 ad later.", () => {
+        expect(typeof INSTANCE?.getAllContactsBornAndRegister(2000, 2019)).toBe("object");
+        expect(INSTANCE?.getAllContactsBornAndRegister(1983, 2019)).toStrictEqual(EXPECTED_RENAUD);
+    });
+
+    xit("must return all contacts with email provider orange", () => {
+        expect(typeof INSTANCE?.getAllContactsWithEmailProvider('orange')).toBe("object");
+        expect(INSTANCE?.getAllContactsWithEmailProvider('orange')).toStrictEqual(EXPECTED_RENAUD);
+    })
+})
